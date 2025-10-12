@@ -3,7 +3,7 @@
 #include "prime_number.h"
 #include "const.h"
 
-void main () {
+int main () {
     unsigned int n;
     clock_t start, end;
     float cpu_time_used;

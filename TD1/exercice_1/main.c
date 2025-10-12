@@ -2,7 +2,7 @@
 #include "fibonacci.h"
 #include <time.h>
 
-void main() {
+int main() {
     unsigned int n;
     clock_t start, end;
     float cpu_runtime;
@@ -21,7 +21,7 @@ void main() {
     if (n < 0) {
         printf("Error! Fibonacci of a negative number doesn't exist.");
     } else {
-        printf("Fibonacci of %i = %i", n, fibonacci_naive(n));
+        printf("Fibonacci of %i = %lld", n, fibonacci_naive(n));
     }
     end = clock();
     cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
@@ -32,7 +32,7 @@ void main() {
     if (n < 0) {
         printf("Error! Fibonacci of a negative number doesn't exist.");
     } else {
-        printf("Fibonacci of %i = %i", n, fibonacci(n, DPFib));
+        printf("Fibonacci of %i = %lld", n, fibonacci(n, DPFib));
     }
     end = clock();
     cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
