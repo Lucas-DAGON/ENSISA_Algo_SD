@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
-#include "prime_number.h"
-#include "const.h"
+#include "..\include\prime_number.h"
+#include "..\include\const.h"
 
 int main () {
     unsigned int n;
