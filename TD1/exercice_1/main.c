@@ -37,4 +37,6 @@ void main() {
     end = clock();
     cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
     printf("\nTime taken (DP): %f seconds\n", cpu_runtime);
+
+    return 0;
 }

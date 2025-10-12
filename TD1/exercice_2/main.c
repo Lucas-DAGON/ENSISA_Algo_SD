@@ -61,4 +61,6 @@ void main () {
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
     printf("Optimized: Number of primes up to %i is %i\n", n, count);
     printf("Time taken (optimized): %f seconds\n", cpu_time_used);
+
+    return 0;
 }
