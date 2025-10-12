@@ -3,8 +3,9 @@
 #include <time.h>
 
 void main() {
-    int n;
+    unsigned int n;
     clock_t start, end;
+    float cpu_runtime;
     
     printf("Enter a positive integer: ");
     scanf("%d", &n);
@@ -20,20 +21,20 @@ void main() {
     if (n < 0) {
         printf("Error! Fibonacci of a negative number doesn't exist.");
     } else {
-        printf("Fibonacci of %d = %d", n, fibonacci_naive(n));
+        printf("Fibonacci of %i = %i", n, fibonacci_naive(n));
     }
     end = clock();
-    double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
-    printf("\nTime taken (naive): %f seconds\n", time_spent);
+    cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
+    printf("\nTime taken (naive): %f seconds\n", cpu_runtime);
 
     //DPFib
     start = clock();
     if (n < 0) {
         printf("Error! Fibonacci of a negative number doesn't exist.");
     } else {
-        printf("Fibonacci of %d = %d", n, fibonacci(n, DPFib));
+        printf("Fibonacci of %i = %i", n, fibonacci(n, DPFib));
     }
     end = clock();
-    time_spent = (double)(end - start) / CLOCKS_PER_SEC;
-    printf("\nTime taken (DP): %f seconds\n", time_spent);
+    cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
+    printf("\nTime taken (DP): %f seconds\n", cpu_runtime);
 }

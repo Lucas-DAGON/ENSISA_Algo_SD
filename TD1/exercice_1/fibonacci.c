@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "fibonacci.h"
 
-long long int fibonacci(int n, long long int DPFib[]) {
+unsigned long long int fibonacci(unsigned int n, long long int DPFib[]) {
     if (n <= 1) return n;
 
     if (DPFib[n] != -1) return DPFib[n];
@@ -11,7 +11,7 @@ long long int fibonacci(int n, long long int DPFib[]) {
 
 }
 
-long long int fibonacci_naive(int n) {
+unsigned long long int fibonacci_naive(unsigned int n) {
     if (n <= 1)
         return n;
     return fibonacci_naive(n - 1) + fibonacci_naive(n - 2);

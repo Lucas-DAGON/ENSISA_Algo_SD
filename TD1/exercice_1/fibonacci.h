@@ -1,2 +1,2 @@
-long long int fibonacci(int n, long long int DPFib[]);
-long long int fibonacci_naive(int n);
+unsigned long long int fibonacci(unsigned int n, long long int DPFib[]);
+unsigned long long int fibonacci_naive(unsigned int n);
