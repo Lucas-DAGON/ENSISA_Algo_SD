@@ -5,7 +5,7 @@ Repository for all exercises (TDs) used in the course.
 
 This repository includes a top-level `makefile` that can build each exercise independently and run them. The Makefile was designed to work on both Unix-like systems and Windows (PowerShell).
 
-Build artifacts are put into the `build/` directory. Example executables produced by the Makefile:
+binaries are put into the `binary/` directory. Example executables produced by the Makefile:
 - `build/fibonacci.exe`  (from `TD1/exercice_1`)
 - `build/prime_number.exe` (from `TD1/exercice_2`)
 

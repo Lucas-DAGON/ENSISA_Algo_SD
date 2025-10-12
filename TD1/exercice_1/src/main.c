@@ -1,39 +1,32 @@
 #include <stdio.h>
 #include "..\include\fibonacci.h"
 #include <time.h>
+#include <inttypes.h>
 
-int main() {
+int main(void) {
     unsigned int n;
     clock_t start, end;
     float cpu_runtime;
     
     printf("Enter a positive integer: ");
-    scanf("%d", &n);
+    if (scanf("%u", &n) != 1) return 1;
 
-    long long int DPFib[n + 1];
-    for(int i = 0; i <= n; i++) {
-        DPFib[i] = -1;
+    uint64_t DPFib[n + 1];
+    for (unsigned int i = 0; i <= n; i++) {
+        DPFib[i] = (uint64_t)-1; /* sentinel */
     }
     
 
-    //naive
+    /* naive */
     start = clock();
-    if (n < 0) {
-        printf("Error! Fibonacci of a negative number doesn't exist.");
-    } else {
-        printf("Fibonacci of %i = %lld", n, fibonacci_naive(n));
-    }
+    printf("Fibonacci of %u = %" PRIu64, n, fibonacci_naive(n));
     end = clock();
     cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
     printf("\nTime taken (naive): %f seconds\n", cpu_runtime);
 
-    //DPFib
+    /* DPFib */
     start = clock();
-    if (n < 0) {
-        printf("Error! Fibonacci of a negative number doesn't exist.");
-    } else {
-        printf("Fibonacci of %i = %lld", n, fibonacci(n, DPFib));
-    }
+    printf("Fibonacci of %u = %" PRIu64, n, fibonacci(n, DPFib));
     end = clock();
     cpu_runtime = ((float)(end - start)) / CLOCKS_PER_SEC;
     printf("\nTime taken (DP): %f seconds\n", cpu_runtime);

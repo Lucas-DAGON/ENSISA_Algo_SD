@@ -1,5 +1,4 @@
-#include "prime_number.h"
-#include "const.h"
+#include "..\include\prime_number.h"
 
 
 bool prime_num_naive(unsigned int n) {

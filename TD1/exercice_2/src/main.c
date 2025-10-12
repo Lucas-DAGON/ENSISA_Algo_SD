@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdbool.h>
 #include "..\include\prime_number.h"
-#include "..\include\const.h"
 
-int main () {
+int main(void) {
     unsigned int n;
     clock_t start, end;
     float cpu_time_used;
     unsigned int count = 0;
 
     printf("Enter a number: ");
-    scanf("%d", &n);
+    if (scanf("%u", &n) != 1) return 1;
 
     bool is_prime[n+1]; // Array to track prime status
-    
-    for (int i = 0; i <= n; i++) {
+
+    for (unsigned int i = 0; i <= n; i++) {
         is_prime[i] = false;
     }
 
