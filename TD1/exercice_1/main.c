@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <fibonacci.h>
+#include "fibonacci.h"
 #include <time.h>
 
 void main() {
@@ -9,7 +9,11 @@ void main() {
     printf("Enter a positive integer: ");
     scanf("%d", &n);
 
-    int DPFib[n + 1] = {-1};
+    long long int DPFib[n + 1];
+    for(int i = 0; i <= n; i++) {
+        DPFib[i] = -1;
+    }
+    
 
     //naive
     start = clock();
