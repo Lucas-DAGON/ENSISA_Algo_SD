@@ -13,15 +13,15 @@ $(shell [ -d $(BUILD_DIR) ] || mkdir $(BUILD_DIR) 2> /dev/null || powershell -No
 SRC_TD1_EX1 := TD1/exercice_1/src
 INCLUDE_TD1_EX1 := TD1/exercice_1/include
 SRCS_TD1_EX1 := $(wildcard $(SRC_TD1_EX1)/*.c)
-OBJS_TD1_EX1 := $(patsubst $(SRC_TD1_EX1)/%.c,$(BUILD_DIR)/ex1_%.o,$(SRCS_TD1_EX1))
+OBJS_TD1_EX1 := $(patsubst $(SRC_TD1_EX1)/%.c,$(BUILD_DIR)/td1_ex1_%.o,$(SRCS_TD1_EX1))
 DEPS_TD1_EX1 := $(OBJS_TD1_EX1:.o=.d)
 TARGET_TD1_EX1 := $(BUILD_DIR)/fibonacci.exe
 
-# --- TD2 Exercice 2 ---
+# --- TD1 Exercice 2 ---
 SRC_TD1_EX2 := TD1/exercice_2/src
 INCLUDE_TD1_EX2 := TD1/exercice_2/include
 SRCS_TD1_EX2 := $(wildcard $(SRC_TD1_EX2)/*.c)
-OBJS_TD1_EX2 := $(patsubst $(SRC_TD1_EX2)/%.c,$(BUILD_DIR)/ex2_%.o,$(SRCS_TD1_EX2))
+OBJS_TD1_EX2 := $(patsubst $(SRC_TD1_EX2)/%.c,$(BUILD_DIR)/td1_ex2_%.o,$(SRCS_TD1_EX2))
 DEPS_TD1_EX2 := $(OBJS_TD1_EX2:.o=.d)
 TARGET_TD1_EX2 := $(BUILD_DIR)/prime_number.exe
 
@@ -29,7 +29,7 @@ TARGET_TD1_EX2 := $(BUILD_DIR)/prime_number.exe
 SRC_TD2_EX1 := TD2/exercice_1/src
 INCLUDE_TD2_EX1 := TD2/exercice_1/include
 SRCS_TD2_EX1 := $(wildcard $(SRC_TD2_EX1)/*.c)
-OBJS_TD2_EX1 := $(patsubst $(SRC_TD2_EX1)/%.c,$(BUILD_DIR)/ex1_%.o,$(SRCS_TD2_EX1))
+OBJS_TD2_EX1 := $(patsubst $(SRC_TD2_EX1)/%.c,$(BUILD_DIR)/td2_ex1_%.o,$(SRCS_TD2_EX1))
 DEPS_TD2_EX1 := $(OBJS_TD2_EX1:.o=.d)
 TARGET_TD2_EX1 := $(BUILD_DIR)/search.exe
 
@@ -37,11 +37,11 @@ TARGET_TD2_EX1 := $(BUILD_DIR)/search.exe
 SRC_TD2_EX2 := TD2/exercice_2/src
 INCLUDE_TD2_EX2 := TD2/exercice_2/include
 SRCS_TD2_EX2 := $(wildcard $(SRC_TD2_EX2)/*.c)
-OBJS_TD2_EX2 := $(patsubst $(SRC_TD2_EX2)/%.c,$(BUILD_DIR)/ex1_%.o,$(SRCS_TD2_EX2))
+OBJS_TD2_EX2 := $(patsubst $(SRC_TD2_EX2)/%.c,$(BUILD_DIR)/td2_ex2_%.o,$(SRCS_TD2_EX2))
 DEPS_TD2_EX2 := $(OBJS_TD2_EX2:.o=.d)
 TARGET_TD2_EX2 := $(BUILD_DIR)/sort.exe
 
-.PHONY: all td1_exo1 td1_exo2 clean help
+.PHONY: all td1_exo1 td1_exo2 td2_exo1 td2_exo2 clean help
 
 all: td1_exo1 td1_exo2 td2_exo1 td2_exo2
 
