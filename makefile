@@ -41,9 +41,25 @@ OBJS_TD2_EX2 := $(patsubst $(SRC_TD2_EX2)/%.c,$(BUILD_DIR)/td2_ex2_%.o,$(SRCS_TD
 DEPS_TD2_EX2 := $(OBJS_TD2_EX2:.o=.d)
 TARGET_TD2_EX2 := $(BUILD_DIR)/sort.exe
 
-.PHONY: all td1_exo1 td1_exo2 td2_exo1 td2_exo2 clean help
+# --- TD3 Exercice 1 ---
+SRC_TD3_EX1 := TD3/exercice_1/src
+INCLUDE_TD3_EX1 := TD3/exercice_1/include
+SRCS_TD3_EX1 := $(wildcard $(SRC_TD3_EX1)/*.c)
+OBJS_TD3_EX1 := $(patsubst $(SRC_TD3_EX1)/%.c,$(BUILD_DIR)/td3_ex1_%.o,$(SRCS_TD3_EX1))
+DEPS_TD3_EX1 := $(OBJS_TD3_EX1:.o=.d)
+TARGET_TD3_EX1 := $(BUILD_DIR)/library.exe
 
-all: td1_exo1 td1_exo2 td2_exo1 td2_exo2
+# --- TD3 Exercice 2 ---
+SRC_TD3_EX2 := TD3/exercice_2/src
+INCLUDE_TD3_EX2 := TD3/exercice_2/include
+SRCS_TD3_EX2 := $(wildcard $(SRC_TD3_EX2)/*.c)
+OBJS_TD3_EX2 := $(patsubst $(SRC_TD3_EX2)/%.c,$(BUILD_DIR)/td3_ex2_%.o,$(SRCS_TD3_EX2))
+DEPS_TD3_EX2 := $(OBJS_TD3_EX2:.o=.d)
+TARGET_TD3_EX2 := $(BUILD_DIR)/aladdin.exe
+
+.PHONY: all td1_exo1 td1_exo2 td2_exo1 td2_exo2 td3_exo1 td3_exo2 clean help
+
+all: td1_exo1 td1_exo2 td2_exo1 td2_exo2 td3_exo1 td3_exo2
 
 # Top-level rules for exercise 1
 $(TARGET_TD1_EX1): $(OBJS_TD1_EX1)
@@ -89,8 +105,30 @@ td2_exo2: $(TARGET_TD2_EX2)
 	@echo "\nBuilding TD2 Exercice 2..."
 	@echo "\nBuild successful (built $(TARGET_TD2_EX2))"
 
+# Top-level rules for td3 exercise 1
+$(TARGET_TD3_EX1): $(OBJS_TD3_EX1)
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(BUILD_DIR)/td3_ex1_%.o: $(SRC_TD3_EX1)/%.c
+	$(CC) $(CPPFLAGS) -I$(INCLUDE_TD3_EX1) $(CFLAGS) -c $< -o $@
+
+td3_exo1: $(TARGET_TD3_EX1)
+	@echo "\nBuilding TD3 Exercice 1..."
+	@echo "\nBuild successful (built $(TARGET_TD3_EX1))"
+
+# Top-level rules for td3 exercise 2
+$(TARGET_TD3_EX2): $(OBJS_TD3_EX2)
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(BUILD_DIR)/td3_ex2_%.o: $(SRC_TD3_EX2)/%.c
+	$(CC) $(CPPFLAGS) -I$(INCLUDE_TD3_EX2) $(CFLAGS) -c $< -o $@
+
+td3_exo2: $(TARGET_TD3_EX2)
+	@echo "\nBuilding TD3 Exercice 2..."
+	@echo "\nBuild successful (built $(TARGET_TD3_EX2))"
+
 # Inclusion des fichiers de dépendance (if present)
--include $(DEPS_TD1_EX1) $(DEPS_TD1_EX2) $(DEPS_TD2_EX1) $(DEPS_TD2_EX2)
+-include $(DEPS_TD1_EX1) $(DEPS_TD1_EX2) $(DEPS_TD2_EX1) $(DEPS_TD2_EX2) $(DEPS_TD3_EX1) $(DEPS_TD3_EX2)
 
 
 clean:
@@ -127,6 +165,14 @@ run:
 		$(MAKE) td2_exo2; \
 		echo "Running $(TARGET_TD2_EX2)..."; \
 		$(TARGET_TD2_EX2) || true; \
+	elif [ "$(TD3_EX)" = "1" ]; then \
+		$(MAKE) td3_exo1; \
+		echo "Running $(TARGET_TD3_EX1)..."; \
+		$(TARGET_TD3_EX1) || true; \
+	elif [ "$(TD3_EX)" = "2" ]; then \
+		$(MAKE) td3_exo2; \
+		echo "Running $(TARGET_TD3_EX2)..."; \
+		$(TARGET_TD3_EX2) || true; \
 	else \
-		echo "Usage: make run TD1_EX=1 or TD1_EX=2"; false; \
+		echo "Usage: make run TD1_EX=1, TD1_EX=2, TD2_EX=1, TD2_EX=2, etc..."; false; \
 	fi
